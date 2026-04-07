@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EKS AutoMode 기반 AI 플랫폼 구축 워크샵</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background-color:#eaeded; font-family:'Apple SD Gothic Neo','Malgun Gothic','Helvetica Neue',sans-serif; color:#16191f; }
+  .wrapper { max-width:860px; margin:0 auto; padding:24px 16px; }
+
+  .header { background-color:#232f3e; border-radius:4px 4px 0 0; padding:32px 40px; }
+  .header .back { font-size:13px; color:#ff9900; text-decoration:none; display:inline-block; margin-bottom:16px; }
+  .header .back:hover { text-decoration:underline; }
+  .header .badge { display:inline-block; background-color:#ec7211; color:#ffffff; font-size:11px; font-weight:700; padding:3px 10px; border-radius:3px; letter-spacing:0.5px; margin-bottom:12px; }
+  .header h1 { font-size:22px; color:#ffffff; font-weight:700; line-height:1.4; margin-bottom:8px; }
+  .header .meta { font-size:13px; color:#879596; }
+  .header .meta span { color:#ff9900; font-weight:600; }
+
+  .content { background-color:#ffffff; padding:32px 40px; }
+
+  .section-label { font-size:11px; font-weight:700; color:#ff9900; letter-spacing:1px; margin-bottom:8px; text-transform:uppercase; }
+  .desc { font-size:14px; color:#16191f; line-height:1.8; margin-bottom:24px; }
+
+  .highlight-box { background-color:#fff8f0; border:1px solid #f2d6ae; border-radius:4px; padding:20px 24px; margin-bottom:24px; }
+  .highlight-box .title { font-size:14px; font-weight:700; color:#c45500; margin-bottom:10px; }
+  .highlight-box ul { list-style:none; padding:0; }
+  .highlight-box li { font-size:13px; color:#16191f; line-height:1.7; padding:4px 0 4px 18px; position:relative; }
+  .highlight-box li::before { content:'✓'; position:absolute; left:0; color:#c45500; font-weight:700; }
+  .highlight-box p { font-size:13px; color:#545b64; line-height:1.7; margin-top:8px; }
+
+  .info-box { background-color:#fafafa; border:1px solid #d5dbdb; border-radius:4px; padding:20px 24px; margin-bottom:24px; }
+  .info-box .title { font-size:14px; font-weight:700; color:#16191f; margin-bottom:10px; }
+  .info-box ul { list-style:none; padding:0; }
+  .info-box li { font-size:13px; color:#16191f; line-height:1.7; padding:4px 0 4px 18px; position:relative; }
+  .info-box li::before { content:'•'; position:absolute; left:0; color:#ff9900; font-weight:700; }
+  .info-box p { font-size:13px; color:#545b64; line-height:1.7; }
+  .info-box a { color:#ff9900; text-decoration:underline; }
+
+  .special-list { list-style:none; padding:0; margin-bottom:24px; }
+  .special-list li { font-size:13px; color:#16191f; line-height:1.7; padding:6px 0 6px 20px; position:relative; }
+  .special-list li::before { content:'▸'; position:absolute; left:0; color:#ff9900; font-weight:700; }
+  .special-list li strong { color:#232f3e; }
+
+  /* Journey diagram */
+  .journey { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:28px; }
+  .journey-step { flex:1; min-width:140px; max-width:180px; background-color:#232f3e; border-radius:4px; padding:14px 12px; text-align:center; }
+  .journey-step .icon { font-size:20px; margin-bottom:4px; }
+  .journey-step .label { font-size:11px; color:#ff9900; font-weight:700; letter-spacing:0.5px; }
+  .journey-step .name { font-size:12px; color:#ffffff; font-weight:600; margin-top:2px; }
+  .journey-step.foundation { border-bottom:3px solid #ff9900; }
+  .journey-step.advanced { border-bottom:3px solid #ec7211; }
+
+  /* Module card */
+  .module-card { border-left:4px solid #ff9900; background-color:#fafafa; border-radius:0 4px 4px 0; padding:20px 24px; margin-bottom:16px; }
+  .module-card.adv { border-left-color:#ec7211; }
+  .module-card .mod-header { font-size:15px; font-weight:700; color:#16191f; margin-bottom:4px; }
+  .module-card .mod-sub { font-size:12px; color:#545b64; font-style:italic; margin-bottom:10px; }
+  .module-card .mod-item { font-size:13px; color:#16191f; line-height:1.7; padding:3px 0 3px 20px; position:relative; }
+  .module-card .mod-item::before { position:absolute; left:0; }
+  .module-card .mod-focus { font-size:12px; color:#c45500; font-weight:600; margin-top:8px; padding:8px 12px; background-color:#fff8f0; border-radius:3px; }
+
+  /* Tech list */
+  .tech-list { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+  .tech-tag { background-color:#232f3e; color:#ffffff; font-size:12px; font-weight:600; padding:6px 14px; border-radius:3px; }
+
+  /* Format grid */
+  .format-grid { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+  .format-item { flex:1; min-width:140px; background-color:#fafafa; border:1px solid #d5dbdb; border-radius:4px; padding:12px 16px; text-align:center; }
+  .format-item .f-label { font-size:11px; color:#545b64; font-weight:600; margin-bottom:4px; }
+  .format-item .f-value { font-size:13px; color:#16191f; font-weight:700; }
+
+  .tips-box { background-color:#f0f8ff; border:1px solid #b8d4e3; border-radius:4px; padding:20px 24px; margin-bottom:24px; }
+  .tips-box .title { font-size:14px; font-weight:700; color:#16191f; margin-bottom:10px; }
+  .tips-box li { font-size:13px; color:#16191f; line-height:1.7; padding:3px 0 3px 18px; position:relative; list-style:none; }
+  .tips-box li::before { content:'💡'; position:absolute; left:0; font-size:11px; }
+  .tips-box ul { padding:0; }
+
+  .cta-box { background-color:#232f3e; border-radius:4px; padding:24px; text-align:center; margin-bottom:24px; }
+  .cta-box p { font-size:15px; color:#ffffff; line-height:1.7; }
+  .cta-box .accent { color:#ff9900; font-weight:700; }
+
+  .footer { background-color:#232f3e; padding:20px 40px; text-align:center; border-radius:0 0 4px 4px; }
+  .footer p { font-size:11px; color:#879596; line-height:1.6; }
+  .footer a { color:#ff9900; text-decoration:underline; }
+
+  @media (max-width: 600px) {
+    .journey { flex-direction:column; align-items:center; }
+    .format-grid { flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <a href="agenda.html#workshops" class="back">← Agenda로 돌아가기</a>
+    <div><span class="badge">HANDS ON - 2</span></div>
+    <h1>EKS AutoMode 기반 AI 플랫폼 구축 워크샵</h1>
+    <div class="meta">
+      <span>Workshop - 오후</span> · 14:00 - 16:50 · 18.100호
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Overview -->
+    <p style="font-size:13px;color:#545b64;line-height:1.6;margin-bottom:16px;padding:10px 16px;background-color:#fafafa;border-left:3px solid #ff9900;border-radius:0 4px 4px 0;">
+      본 워크숍은 <strong>Architect and deploy advanced Agentic AI platforms on Amazon EKS</strong> 내용을 기반으로 실습합니다.
+    </p>
+    <div class="section-label">Overview</div>
+    <p class="desc">
+      Amazon EKS에서 진행하는 종합 실습형 GenAI 워크샵에 오신 것을 환영합니다.
+      앞으로 몇 시간 동안 첫 번째 LLM 배포부터 지능형 애플리케이션 구축까지, 완전한 생성형 AI 플랫폼을 구축하게 됩니다.
+    </p>
+
+    <!-- Built on Proven Foundation -->
+    <div class="highlight-box">
+      <div class="title">🏗️ Built on Proven Foundation</div>
+      <p style="margin-top:0;margin-bottom:8px;">이 워크샵은 Amazon EKS에서 GenAI 플랫폼을 배포하기 위한 종합 레퍼런스 아키텍처인 <strong>AWS GenAI on EKS Starter Kit</strong>을 기반으로 구축되었습니다.</p>
+      <p style="margin-top:0;margin-bottom:8px;">워크샵 이후에 할 수 있는 것들:</p>
+      <ul>
+        <li>Starter Kit을 사용하여 자신의 AWS 계정에 동일한 패턴 배포</li>
+        <li>특정 사용 사례에 맞게 플랫폼 커스터마이징</li>
+        <li>수천 건의 AI 요청을 자신 있게 처리할 수 있도록 확장</li>
+        <li>실전 검증된 Kubernetes 구성 활용</li>
+      </ul>
+      <p>🏠 <strong>Take It Home:</strong> 오늘 구축하는 모든 것을 오픈소스 Starter Kit을 사용하여 자신의 환경에 배포할 수 있습니다!</p>
+    </div>
+
+    <!-- What Makes This Workshop Special -->
+    <div class="section-label">🎯 What Makes This Workshop Special?</div>
+    <p class="desc" style="margin-bottom:12px;">이것은 단순한 "Hello World" AI 튜토리얼이 아닙니다. 다음과 같은 내용을 다룹니다:</p>
+    <ul class="special-list">
+      <li><strong>EKS Auto Mode 기반 GenAI 플랫폼</strong></li>
+      <li><strong>실제 LLM</strong> — AWS Neuron 칩에서 구동되는 Qwen 3 8b &amp; DeepSeek R1 Qwen 3 8b, Amazon Bedrock을 통한 Claude 4.5</li>
+      <li><strong>최신 AI 패턴</strong> — 관찰 가능성, 비용 추적, 확장성</li>
+      <li><strong>최첨단 프레임워크</strong> — LangChain, LangGraph, Model Context Protocol</li>
+      <li><strong>실전 GenAI 배포를 반영한 실습 연습</strong></li>
+    </ul>
+
+    <!-- Learning Journey -->
+    <div class="section-label">🚀 Your Learning Journey</div>
+    <div class="journey">
+      <div class="journey-step foundation">
+        <div class="icon">🤖</div>
+        <div class="label">Module 1</div>
+        <div class="name">Model Interaction</div>
+      </div>
+      <div class="journey-step foundation">
+        <div class="icon">🏗️</div>
+        <div class="label">Module 2</div>
+        <div class="name">Platform Components</div>
+      </div>
+      <div class="journey-step advanced">
+        <div class="icon">💡</div>
+        <div class="label">Module 3</div>
+        <div class="name">GenAI Apps</div>
+      </div>
+    </div>
+
+    <!-- Module 1 -->
+    <div class="module-card">
+      <div class="mod-header">Module 1: Interacting with Models</div>
+      <div class="mod-sub">From Zero to AI Chat in Minutes</div>
+      <p style="font-size:13px;color:#16191f;line-height:1.7;margin-bottom:8px;">다양한 배포 패턴을 통해 대규모 언어 모델과 상호작용하는 것부터 시작합니다:</p>
+      <div class="mod-item">💬 <strong>Open WebUI</strong> — 모델 상호작용을 위한 ChatGPT 스타일 인터페이스 배포</div>
+      <div class="mod-item">⚡ <strong>vLLM on AWS Neuron</strong> — Neuron에서 Qwen 3 8b &amp; DeepSeek R1 Qwen 3 8b 호스팅</div>
+      <div class="mod-item">☁️ <strong>AWS Bedrock Integration</strong> — Amazon Bedrock을 통해 Claude 4.5 및 GPT OSS 20b 연결</div>
+      <div class="mod-focus">🔬 실습 포인트: EKS에 배포된 실제 모델을 사용하여 즉각적인 결과를 확인합니다 — 시뮬레이션이나 모킹 없이!</div>
+    </div>
+
+    <!-- Module 2 -->
+    <div class="module-card">
+      <div class="mod-header">Module 2: GenAI Platform Components</div>
+      <div class="mod-sub">Building Your AI Infrastructure</div>
+      <p style="font-size:13px;color:#16191f;line-height:1.7;margin-bottom:8px;">개별 컴포넌트를 통합 플랫폼으로 전환합니다:</p>
+      <div class="mod-item">🔄 <strong>LiteLLM Gateway</strong> — 모든 모델을 위한 통합 API 생성</div>
+      <div class="mod-item">📊 <strong>Langfuse Observability</strong> — 모든 토큰, 비용, 상호작용 추적</div>
+      <div class="mod-item">🔧 <strong>Platform Integration</strong> — 모든 컴포넌트를 원활하게 연결</div>
+    </div>
+
+    <!-- Module 3 -->
+    <div class="module-card adv">
+      <div class="mod-header">Module 3: Building GenAI Applications</div>
+      <div class="mod-sub">From Chatbots to Intelligent Agents</div>
+      <p style="font-size:13px;color:#16191f;line-height:1.7;margin-bottom:8px;">최신 프레임워크를 사용하여 정교한 AI 애플리케이션을 구축합니다:</p>
+      <div class="mod-item">🔗 <strong>LangChain &amp; LangGraph</strong> — 체인, 에이전트, 워크플로우 구축</div>
+      <div class="mod-item">💾 <strong>Memory Stores</strong> — 세션 데이터 유지를 위한 Lang-* 메모리 스토어 활용</div>
+      <div class="mod-item">🔧 <strong>Model Context Protocol</strong> — MCP 서버를 통한 외부 도구 및 API 통합</div>
+      <div class="mod-item">🤖 <strong>Secure and Observe</strong> — 에이전트 플로우를 플랫폼 컴포넌트와 통합</div>
+    </div>
+
+    <!-- Technologies -->
+    <div class="section-label">🛠️ Technologies You'll Master</div>
+    <div class="tech-list">
+      <span class="tech-tag">Amazon EKS Auto Mode</span>
+      <span class="tech-tag">AWS Neuron (inf2)</span>
+      <span class="tech-tag">Amazon EFS</span>
+    </div>
+
+    <!-- Who Should Attend -->
+    <div class="info-box">
+      <div class="title">👥 Who Should Attend?</div>
+      <ul>
+        <li>GenAI 애플리케이션을 구축하는 소프트웨어 엔지니어</li>
+        <li>Kubernetes에서 AI 워크로드를 배포하는 DevOps 엔지니어</li>
+        <li>GenAI 플랫폼을 설계하는 솔루션 아키텍트</li>
+        <li>LLM을 다루는 ML 엔지니어</li>
+        <li>GenAI 전략을 평가하는 기술 리더</li>
+      </ul>
+    </div>
+
+    <!-- Prerequisites -->
+    <div class="highlight-box">
+      <div class="title">✅ Prerequisites</div>
+      <ul>
+        <li>기본적인 Kubernetes 지식 (kubectl 사용 경험)</li>
+        <li>AWS 계정 접근 권한 또는 Workshop Studio 이벤트 자격 증명</li>
+        <li>AI에 대한 호기심과 실험 의지!</li>
+      </ul>
+      <p>AI/ML 전문 지식은 필요하지 않습니다! 구축하면서 개념을 설명해 드립니다.</p>
+    </div>
+
+    <!-- Learning Objectives -->
+    <div class="info-box">
+      <div class="title">🎓 Learning Objectives</div>
+      <p style="margin-bottom:8px;">이 워크샵을 마치면 다음을 할 수 있게 됩니다:</p>
+      <ul>
+        <li>Amazon EKS에서 오픈소스 LLM 배포 및 상호작용</li>
+        <li>포괄적인 관찰 가능성을 갖춘 통합 GenAI 플랫폼 구축</li>
+        <li>최신 프레임워크를 사용한 지능형 에이전트 생성</li>
+        <li>AI 워크로드의 비용 및 성능 모니터링</li>
+        <li>다양한 모델 배포 전략 비교</li>
+        <li>Starter Kit을 사용하여 자신의 AWS 계정에 유사한 플랫폼 배포</li>
+      </ul>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      © 2026 Amazon Web Services, Inc. 또는 계열사. All rights reserved.<br>
+      <a href="https://aws.amazon.com/ko/privacy/">개인정보 처리방침</a>을 확인해 주시기 바랍니다.
+    </p>
+  </div>
+
+</div><!-- /wrapper -->
+</body>
+</html>

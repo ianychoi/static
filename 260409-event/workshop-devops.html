@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS DevOps Agent Workshop: Amazon EKS Incident Response</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background-color:#eaeded; font-family:'Apple SD Gothic Neo','Malgun Gothic','Helvetica Neue',sans-serif; color:#16191f; }
+  .wrapper { max-width:860px; margin:0 auto; padding:24px 16px; }
+
+  .header { background-color:#232f3e; border-radius:4px 4px 0 0; padding:32px 40px; }
+  .header .back { font-size:13px; color:#ff9900; text-decoration:none; display:inline-block; margin-bottom:16px; }
+  .header .back:hover { text-decoration:underline; }
+  .header .badge { display:inline-block; background-color:#c45500; color:#ffffff; font-size:11px; font-weight:700; padding:3px 10px; border-radius:3px; letter-spacing:0.5px; margin-bottom:12px; }
+  .header h1 { font-size:22px; color:#ffffff; font-weight:700; line-height:1.4; margin-bottom:8px; }
+  .header .meta { font-size:13px; color:#879596; }
+  .header .meta span { color:#ff9900; font-weight:600; }
+
+  .content { background-color:#ffffff; padding:32px 40px; }
+
+  .section-label { font-size:11px; font-weight:700; color:#ff9900; letter-spacing:1px; margin-bottom:8px; text-transform:uppercase; }
+  .desc { font-size:14px; color:#16191f; line-height:1.8; margin-bottom:24px; }
+
+  .info-table { width:100%; border-collapse:collapse; margin-bottom:28px; }
+  .info-table th { background-color:#232f3e; color:#ffffff; font-size:12px; font-weight:700; padding:10px 16px; text-align:left; }
+  .info-table td { font-size:13px; color:#16191f; padding:12px 16px; border-bottom:1px solid #d5dbdb; line-height:1.6; }
+  .info-table tr:last-child td { border-bottom:none; }
+  .info-table .label { font-weight:700; color:#545b64; min-width:140px; background-color:#fafafa; }
+
+  .learn-box { background-color:#fff8f0; border:1px solid #f2d6ae; border-radius:4px; padding:20px 24px; margin-bottom:24px; }
+  .learn-box .title { font-size:14px; font-weight:700; color:#c45500; margin-bottom:12px; }
+  .learn-box ul { list-style:none; padding:0; }
+  .learn-box li { font-size:13px; color:#16191f; line-height:1.7; padding:6px 0 6px 20px; position:relative; }
+  .learn-box li::before { content:'✓'; position:absolute; left:0; color:#c45500; font-weight:700; }
+
+  .footer { background-color:#232f3e; padding:20px 40px; text-align:center; border-radius:0 0 4px 4px; }
+  .footer p { font-size:11px; color:#879596; line-height:1.6; }
+  .footer a { color:#ff9900; text-decoration:underline; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <a href="agenda.html#workshops" class="back">← Agenda로 돌아가기</a>
+    <div><span class="badge">HANDS ON - 1</span></div>
+    <h1>AWS DevOps Agent Workshop: Amazon EKS Incident Response</h1>
+    <div class="meta">
+      <span>Workshop - 오후</span> · 14:00 - 16:50 · 18.101호
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Overview -->
+    <p style="font-size:13px;color:#545b64;line-height:1.6;margin-bottom:16px;padding:10px 16px;background-color:#fafafa;border-left:3px solid #ff9900;border-radius:0 4px 4px 0;">
+      본 워크숍은 <strong>AWS DevOps Agent - EKS Troubleshooting Workshop</strong> 내용을 기반으로 실습합니다.
+    </p>
+    <div class="section-label">Overview</div>
+    <p class="desc">
+      AWS DevOps Agent EKS Troubleshooting Workshop에 오신 것을 환영합니다!<br><br>
+      이 실습 워크샵에서는 AWS DevOps Agent를 사용하여 Amazon EKS 환경에서 인시던트 대응을 가속화하고 문제를 해결하는 방법을 배웁니다.
+      멀티 서비스 리테일 애플리케이션이 이미 EKS에 배포되어 있으며, 실행 중인 애플리케이션에 실제 장애를 주입하고
+      DevOps Agent를 사용하여 문제를 조사하고 해결하게 됩니다.
+    </p>
+
+    <!-- What You'll Learn -->
+    <div class="learn-box">
+      <div class="title">🎯 What You'll Learn</div>
+      <ul>
+        <li>Amazon EKS에 배포된 프로덕션 수준의 마이크로서비스 애플리케이션 검토</li>
+        <li>EKS 인프라를 모니터링하도록 AWS DevOps Agent 구성</li>
+        <li>장애 주입을 통한 카오스 엔지니어링 실험 실행</li>
+        <li>DevOps Agent를 사용하여 인시던트를 조사하고 근본 원인 파악</li>
+        <li>권장 완화 조치를 적용하여 문제 해결</li>
+      </ul>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>
+      © 2026 Amazon Web Services, Inc. 또는 계열사. All rights reserved.<br>
+      <a href="https://aws.amazon.com/ko/privacy/">개인정보 처리방침</a>을 확인해 주시기 바랍니다.
+    </p>
+  </div>
+
+</div><!-- /wrapper -->
+</body>
+</html>
