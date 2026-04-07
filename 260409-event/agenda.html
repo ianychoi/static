@@ -9,21 +9,17 @@
   body { background-color:#eaeded; font-family:'Apple SD Gothic Neo','Malgun Gothic','Helvetica Neue',sans-serif; color:#16191f; }
   .wrapper { max-width:1100px; margin:0 auto; padding:24px 16px; }
 
-  /* Header */
   .header { background-color:#232f3e; border-radius:4px 4px 0 0; padding:32px 40px; text-align:center; }
   .header h1 { font-size:24px; color:#ffffff; font-weight:700; margin-bottom:8px; }
   .header p { font-size:14px; color:#ff9900; font-weight:600; letter-spacing:1px; }
 
-  /* Anchor Nav */
   .nav { background-color:#ffffff; display:flex; justify-content:center; gap:0; border-bottom:2px solid #ff9900; }
   .nav a { display:inline-block; padding:14px 36px; font-size:15px; font-weight:700; color:#545b64; text-decoration:none; border-bottom:3px solid transparent; transition:all 0.2s; }
   .nav a:hover, .nav a:focus { color:#ff9900; background-color:#fff8f0; }
   .nav a.active { color:#ff9900; border-bottom-color:#ff9900; }
 
-  /* Section */
   .section { background-color:#ffffff; }
 
-  /* Track Headers */
   .track-header-row { display:flex; gap:0; }
   .track-header { flex:1; padding:16px 20px; text-align:center; color:#ffffff; font-weight:700; font-size:15px; }
   .track-header.t1 { background-color:#232f3e; }
@@ -36,7 +32,6 @@
   .track-sub:last-child { border-right:none; }
   .track-sub strong { display:block; font-size:13px; color:#16191f; margin-bottom:2px; }
 
-  /* Session Row */
   .session-row { display:flex; gap:0; border-bottom:1px solid #d5dbdb; min-height:100px; }
   .session-cell { flex:1; padding:16px 20px; border-right:1px solid #d5dbdb; }
   .session-cell:last-child { border-right:none; }
@@ -46,25 +41,20 @@
   .session-meta { font-size:11px; color:#879596; margin-top:4px; }
   .customer-badge { display:inline-block; background-color:#fff8f0; border:1px solid #f2d6ae; border-radius:3px; padding:1px 6px; font-size:10px; color:#c45500; font-weight:600; margin-top:4px; }
 
-  /* Break row */
   .break-row { background-color:#fafafa; padding:12px 24px; text-align:center; font-size:13px; color:#545b64; font-weight:600; border-bottom:1px solid #d5dbdb; }
   .break-row.lunch { background-color:#fff8f0; color:#c45500; font-size:14px; padding:16px 24px; }
 
-  /* Workshop cell */
   .workshop-cell { background-color:#fff8f0; border-left:3px solid #ff9900; }
   .workshop-title { font-size:14px; font-weight:700; color:#16191f; line-height:1.5; margin-bottom:4px; }
   .workshop-time { font-size:12px; color:#c45500; font-weight:600; margin-bottom:6px; }
 
-  /* Section divider */
   .section-divider { background-color:#232f3e; padding:18px 24px; text-align:center; }
   .section-divider span { font-size:18px; color:#ffffff; font-weight:700; }
 
-  /* Closing */
   .closing { background-color:#232f3e; padding:20px 40px; text-align:center; border-radius:0 0 4px 4px; }
   .closing span { font-size:15px; color:#ffffff; font-weight:600; }
   .closing .time { color:#ff9900; }
 
-  /* Responsive */
   @media (max-width: 768px) {
     .track-header-row, .track-sub-row, .session-row { flex-direction:column; }
     .session-cell, .track-sub, .track-header { border-right:none; border-bottom:1px solid #d5dbdb; }
@@ -90,7 +80,7 @@
 
 <div class="section">
 
-  <!-- ===== 공통 오프닝: Welcome & Keynote ===== -->
+  <!-- 공통 오프닝: Welcome & Keynote -->
   <div style="background-color:#ffffff;padding:20px 40px 10px;">
     <div style="background-color:#232f3e;border-radius:4px;padding:16px 24px;">
       <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:4px;">
@@ -111,9 +101,7 @@
     </div>
   </div>
 
-  <!-- ============================================================ -->
-  <!--                    기술 세션 SECTION                          -->
-  <!-- ============================================================ -->
+  <!-- 기술 세션 SECTION -->
   <div id="sessions" style="padding:20px 40px 0;">
     <div class="section-divider" style="border-radius:4px 4px 0 0;">
       <span>📋 기술 세션</span>
@@ -150,8 +138,8 @@
     </div>
   </div>
 
-  <!-- Bio Break -->
-  <div style="padding:0 40px;"><div class="break-row">☕ Bio Break</div></div>
+  <!-- Break -->
+  <div style="padding:0 40px;"><div class="break-row">☕ 세션 이동 및 휴식</div></div>
 
   <!-- Session 2: 11:20 - 12:00 -->
   <div style="padding:0 40px;">
@@ -192,8 +180,8 @@
     </div>
   </div>
 
-  <!-- Bio Break -->
-  <div style="padding:0 40px;"><div class="break-row">☕ Bio Break</div></div>
+  <!-- Break -->
+  <div style="padding:0 40px;"><div class="break-row">☕ 세션 이동 및 휴식</div></div>
 
   <!-- Session 4: 14:20 - 15:00 -->
   <div style="padding:0 40px;">
@@ -212,8 +200,8 @@
     </div>
   </div>
 
-  <!-- Bio Break -->
-  <div style="padding:0 40px;"><div class="break-row">☕ Bio Break</div></div>
+  <!-- Break -->
+  <div style="padding:0 40px;"><div class="break-row">☕ 세션 이동 및 휴식</div></div>
 
   <!-- Session 5: 15:20 - 16:00 -->
   <div style="padding:0 40px;">
@@ -232,8 +220,8 @@
     </div>
   </div>
 
-  <!-- Bio Break -->
-  <div style="padding:0 40px;"><div class="break-row">☕ Bio Break</div></div>
+  <!-- Break -->
+  <div style="padding:0 40px;"><div class="break-row">☕ 세션 이동 및 휴식</div></div>
 
   <!-- Session 6: 16:10 - 16:50 -->
   <div style="padding:0 40px;">
@@ -252,9 +240,7 @@
     </div>
   </div>
 
-  <!-- ============================================================ -->
-  <!--                    워크숍 SECTION                             -->
-  <!-- ============================================================ -->
+  <!-- 워크숍 SECTION -->
   <div id="workshops" style="padding:30px 40px 0;">
     <div class="section-divider" style="border-radius:4px 4px 0 0;">
       <span>🛠️ 핸즈온 워크숍</span>
@@ -273,36 +259,15 @@
     </div>
   </div>
 
-  <!-- Workshop 1: 10:30 - 13:50 -->
+  <!-- Workshop (오전): 10:30 - 13:50 -->
   <div style="padding:0 40px;">
     <div style="background-color:#c45500;padding:8px 16px;">
       <span style="font-size:13px;color:#ffffff;font-weight:700;">Workshop (오전) · 10:30 - 13:50 (점심시간 포함)</span>
     </div>
     <div class="session-row">
       <div class="session-cell workshop-cell">
-        <a href="workshop-devops.html" style="text-decoration:none;color:inherit;display:block;">
-          <div class="workshop-title">AWS DevOps Agent Workshop: Amazon EKS Incident Response</div>
-          <div style="font-size:11px;color:#ff9900;margin-top:6px;">상세 보기 →</div>
-        </a>
-      </div>
-      <div class="session-cell workshop-cell">
         <a href="workshop-genai.html" style="text-decoration:none;color:inherit;display:block;">
           <div class="workshop-title">GenAI on EKS using NVIDIA GPUs</div>
-          <div style="font-size:11px;color:#ff9900;margin-top:6px;">상세 보기 →</div>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Workshop 2: 14:00 - 16:50 -->
-  <div style="padding:0 40px;">
-    <div style="background-color:#ec7211;padding:8px 16px;">
-      <span style="font-size:13px;color:#ffffff;font-weight:700;">Workshop (오후) · 14:00 - 16:50</span>
-    </div>
-    <div class="session-row">
-      <div class="session-cell workshop-cell">
-        <a href="workshop-ai-platform.html" style="text-decoration:none;color:inherit;display:block;">
-          <div class="workshop-title">EKS AutoMode 기반 AI 플랫폼 구축 워크샵</div>
           <div style="font-size:11px;color:#ff9900;margin-top:6px;">상세 보기 →</div>
         </a>
       </div>
@@ -315,7 +280,28 @@
     </div>
   </div>
 
-  <!-- ===== Closing ===== -->
+  <!-- Workshop (오후): 14:00 - 16:50 -->
+  <div style="padding:0 40px;">
+    <div style="background-color:#ec7211;padding:8px 16px;">
+      <span style="font-size:13px;color:#ffffff;font-weight:700;">Workshop (오후) · 14:00 - 16:50</span>
+    </div>
+    <div class="session-row">
+      <div class="session-cell workshop-cell">
+        <a href="workshop-ai-platform.html" style="text-decoration:none;color:inherit;display:block;">
+          <div class="workshop-title">EKS AutoMode 기반 AI 플랫폼 구축 워크샵</div>
+          <div style="font-size:11px;color:#ff9900;margin-top:6px;">상세 보기 →</div>
+        </a>
+      </div>
+      <div class="session-cell workshop-cell">
+        <a href="workshop-devops.html" style="text-decoration:none;color:inherit;display:block;">
+          <div class="workshop-title">AWS DevOps Agent Workshop: Amazon EKS Incident Response</div>
+          <div style="font-size:11px;color:#ff9900;margin-top:6px;">상세 보기 →</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Closing -->
   <div style="padding:20px 40px 0;">
     <div class="closing">
       <span class="time">16:50 - 17:00</span>&nbsp;&nbsp;
