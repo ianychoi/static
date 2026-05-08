@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexible AI solution Korea Roadshow</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Amazon Ember', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #232f3e; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+
+/* AWS Brand Colors */
+:root {
+  --aws-squid-ink: #232f3e;
+  --aws-orange: #ff9900;
+  --aws-smile-orange: #ff9900;
+  --aws-blue: #2074d5;
+  --aws-dark-blue: #1b2a4a;
+  --aws-light-bg: #f2f3f3;
+  --aws-teal: #00a1c9;
+  --aws-purple: #1b3a6b;
+  --aws-gradient-start: #1b2a4a;
+  --aws-gradient-end: #232f3e;
+}
+
+
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--aws-gradient-start) 0%, #1a3a5c 40%, #0d2b4a 100%);
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(27, 58, 107, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 50%, rgba(0, 161, 201, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--aws-purple), var(--aws-teal));
+  color: #fff;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.hero h1 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+}
+.hero h1 .highlight {
+  background: linear-gradient(90deg, var(--aws-orange), #ffb84d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  color: #aab7c4;
+  font-size: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero-cta {
+  display: inline-block;
+  background: var(--aws-orange);
+  color: var(--aws-squid-ink);
+  padding: 14px 36px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.2s;
+  position: relative;
+}
+.hero-cta:hover { background: #ec7211; transform: translateY(-2px); }
+.capacity-notice {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 16px;
+  position: relative;
+}
+
+/* Event Info Bar */
+.info-bar {
+  background: #fff;
+  border-bottom: 1px solid #e9ebed;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.info-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--aws-purple), var(--aws-teal));
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+.info-label { font-size: 12px; color: #687078; text-transform: uppercase; letter-spacing: 0.5px; }
+.info-value { font-size: 15px; font-weight: 600; color: var(--aws-squid-ink); }
+
+/* Section */
+.section { padding: 36px 20px; max-width: 1100px; margin: 0 auto; }
+.section-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--aws-squid-ink);
+}
+.section-title .accent { color: var(--aws-purple); }
+
+/* About */
+.about-text { font-size: 16px; color: #414d5c; margin-bottom: 20px; }
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+}
+.topic-card {
+  background: var(--aws-light-bg);
+  border-left: 4px solid var(--aws-purple);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: #414d5c;
+}
+.topic-card strong { color: var(--aws-squid-ink); }
+
+/* Speakers */
+.speakers-section { background: var(--aws-light-bg); }
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.speaker-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.speaker-avatar {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--aws-purple), var(--aws-teal));
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+}
+.speaker-name { font-size: 15px; font-weight: 700; }
+.speaker-role { font-size: 13px; color: #687078; margin-top: 4px; }
+
+/* Agenda */
+.agenda-item {
+  display: flex;
+  gap: 20px;
+  padding: 14px 16px;
+  border: 1px solid #d5d9d9;
+}
+.agenda-time {
+  min-width: 140px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--aws-teal);
+  padding-top: 2px;
+}
+.agenda-content { flex: 1; }
+.agenda-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.agenda-speaker { font-size: 13px; color: var(--aws-purple); font-weight: 600; margin-bottom: 8px; }
+.agenda-desc { font-size: 14px; color: #414d5c; }
+.agenda-break {
+  background: var(--aws-light-bg);
+  border: 1px solid #d5d9d9;
+  padding: 8px 16px;
+  text-align: center;
+  color: #687078;
+  font-size: 14px;
+}
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, var(--aws-gradient-start), #1a3a5c);
+  padding: 36px 20px;
+  text-align: center;
+}
+.cta-section h2 { color: #fff; font-size: 28px; margin-bottom: 8px; }
+.cta-section p { color: #aab7c4; margin-bottom: 16px; }
+.cta-section .hero-cta { font-size: 18px; padding: 16px 48px; }
+
+/* Footer */
+.footer {
+  background: var(--aws-squid-ink);
+  color: #aab7c4;
+  text-align: center;
+  padding: 16px 20px;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  .info-bar { flex-direction: column; gap: 12px; align-items: flex-start; }
+  .agenda-item { flex-direction: column; gap: 6px; }
+  .section { padding: 24px 16px; }
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="hero">
+  <div class="hero-badge">Session & Hands-on Workshop · Levels 200, 300, 400</div>
+  <h1>Flexible AI solution<br><span class="highlight">Korea Roadshow</span></h1>
+  <p class="hero-sub">Amazon EKS 기반 유연한 AI 플랫폼과 Agentic AI 워크로드 구축</p>
+  <a href="https://aws-experience.com/apj/smb/event/1e479d02-6c03-4158-bbac-93c754c39e67" class="hero-cta">지금 등록하기 →</a>
+  <p class="capacity-notice">⚠ 좌석이 한정되어 있습니다. 서둘러 등록하세요.</p>
+</div>
+
+<div class="info-bar">
+  <div class="info-item">
+    <div class="info-icon">📍</div>
+    <div>
+      <div class="info-label">장소</div>
+      <div class="info-value">서울시 강남구 테헤란로 231, East 18F</div>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon">📅</div>
+    <div>
+      <div class="info-label">날짜</div>
+      <div class="info-value">2026년 6월 4일 (목)</div>
+    </div>
+  </div>
+  <div class="info-item">
+    <div class="info-icon">🕤</div>
+    <div>
+      <div class="info-label">시간</div>
+      <div class="info-value">09:30 – 17:00 (KST)</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title">About the <span class="accent">Event</span></h2>
+  <p class="about-text">생성형 AI와 Agentic AI가 급격히 확산되며 기업들은 더 이상 "AI를 도입할 것인가"가 아닌 "어떻게 자율적으로 운영할 것인가"를 고민하고 있습니다. 특정 벤더나 모델에 종속되지 않으면서도 비용 효율적이고 확장 가능한 AI 플랫폼을 구축하는 것 — 이것이 바로 AWS의 Flexible AI가 해결하고자 하는 핵심 과제입니다.</p>
+  <p class="about-text">오늘 세미나에서는 AWS 인프라와 오픈소스 스택을 기반으로 한 Flexible AI 솔루션의 아키텍처와 도입 전략을 체계적으로 소개합니다. Amazon EKS 기반 AI 서빙 최적화 아키텍처 및 비용 최적화 전략, Agentic AI를 위한 인프라 및 스토리지 설계, 실제 엔터프라이즈 고객의 플랫폼 구축 사례까지 엔드투엔드 플랫폼을 다룹니다. 마지막으로는 EKS 위에 GenAI 에이전트 플랫폼을 직접 배포하는 핸즈온 랩을 통해, 현업에 즉시 적용 가능한 실전 아키텍처 패턴을 가져가실 수 있습니다.</p>
+  <div class="topics-grid">
+    <div class="topic-card"><strong>Self-hosted AI 트렌드</strong> — 데이터 주권, 비용 통제, 커스터마이징 요구 증가</div>
+    <div class="topic-card"><strong>EKS 기반 통합 AI 플랫폼</strong> — 학습/추론/에이전트를 하나의 클러스터에서 운영</div>
+    <div class="topic-card"><strong>Agentic AI</strong> — 자율적으로 추론·계획·실행하는 AI Agent의 프로덕션 배포</div>
+    <div class="topic-card"><strong>비용 및 컴퓨트 최적화</strong> — 칩 선택, 모델 양자화(Quantization), Spot, 스토리지 최적화, Hybrid 전략</div>
+    <div class="topic-card"><strong>실습 중심</strong> — 120분 Hands-on Lab으로 직접 GenAI Agent 플랫폼 배포 경험</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2 class="section-title"><span class="accent">Agenda</span></h2>
+
+  <div class="agenda-item">
+    <div class="agenda-time">09:30 – 10:00</div>
+    <div class="agenda-content"><div class="agenda-title">등록</div></div>
+  </div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">10:00 – 10:10</div>
+    <div class="agenda-content">
+      <div class="agenda-title">인사말 (Greetings)</div>
+      <div class="agenda-speaker">Saeed Gharadaghi</div>
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">10:10 – 10:30</div>
+    <div class="agenda-content">
+      <div class="agenda-title">Key note: 어떤 모델이든, 어디서든 — AWS와 오픈소스 기반으로 유연하고 비용 효율적인 AI 플랫폼 구축하기</div>
+      <div class="agenda-speaker">Martina Bae</div>
+      <div class="agenda-desc">AI 도입 기업들이 직면하는 데이터 주권, 운영 통제권, 벤더 종속 문제를 어떻게 해결할 수 있을까요? 본 세션에서는 AWS의 GPU 인프라와 서비스, 그리고 검증된 오픈소스 스택을 기반으로 구성된 Flexible AI 솔루션을 통해, 특정 모델이나 프레임워크에 종속되지 않으면서도 안전하고 확장 가능한 AI 운영 환경을 구현하는 방법을 소개합니다. 하이브리드 배포 전략부터 AI Gateway 기반의 통합 접근 제어, 워크로드 규모에 따른 비용 최적화까지 — 엔터프라이즈 AI의 완전한 자율성을 확보하는 실질적인 아키텍처 접근 방식을 다룹니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">10:30 – 11:10</div>
+    <div class="agenda-content">
+      <div class="agenda-title">Flex AI 플랫폼 아키텍처 — AWS와 EKS에서 모델부터 에이전트까지</div>
+      <div class="agenda-speaker">Suji Lee</div>
+      <div class="agenda-desc">에이전틱 AI 워크로드를 엔드투엔드로 지원하는 FlexAI 레퍼런스 아키텍처를 살펴봅니다. Auto Mode를 적용한 Amazon EKS가 어떻게 이기종 컴퓨팅 환경을 단일 클러스터 안에서 orchestrate하는지 확인합니다. 대규모 추론에는 NVIDIA GPU, 비용 효율적인 서빙에는 Inferentia/Trainium을 활용하는 구성입니다. 모델 구조 분석, GPU 메모리 사이징, 워크로드에 맞는 인스턴스 선택 방법을 아시아태평양 지역 고객 실제 아키텍처 사례와 함께 설명합니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-break">☕ Break (11:10 – 11:20)</div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">11:20 – 12:00</div>
+    <div class="agenda-content">
+      <div class="agenda-title">EKS 위의 AI 서빙 운영 최적화 - vLLM·KServe·Karpenter로 인프라 효율을 극대화 하기</div>
+      <div class="agenda-speaker">YoungJoon Jeong</div>
+      <div class="agenda-desc">본 세션에서는 Amazon EKS 위에서 vLLM · KServe · Karpenter 를 계층적으로 조합해 이 간극을 좁히는 방법을 다룹니다. vLLM의 PagedAttention과 연속 배칭으로 동시 요청 처리량을 끌어올리고, KServe의 InferenceService로 배포·롤링 업데이트·자동 스케일링을 선언적으로 관리하며, Gpu Operator 로 GPU 인스턴스를 정확히 필요한 만큼만 프로비저닝합니다. 여기에 ECR pull-through 캐시, SOCI 지연 로딩, HuggingFace 모델 pre-warm 같은 AWS 원생 기능을 결합하면 노드 확장 시 콜드 스타트를 분 단위에서 초 단위로 줄일 수 있는 방법들을 소개합니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-break">🍽 Lunch (12:00 – 13:00)</div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">13:00 – 13:30</div>
+    <div class="agenda-content">
+      <div class="agenda-title">Amazon EKS로 구현하는 엔터프라이즈 AI 플랫폼 사례, 오픈소스를 곁들인</div>
+      <div class="agenda-speaker">Jaemin Jung</div>
+      <div class="agenda-desc">많은 엔터프라이즈 고객들이 AI 워크로드를 본격적으로 운영하기 시작하면서 공통적인 인프라 페인포인트에 직면하고 있습니다. GPU 유휴율 문제, 연구원마다 다른 환경으로 인한 환경 불일치, 수동으로 실행되는 파이프라인, 멀티노드 분산 학습 부재, CPU/GPU 리소스 혼재로 인한 비효율 등이 대표적입니다. 이 세션은 실제 대형 고객 사례를 기반으로, Amazon EKS와 오픈소스 기술 스택(Osmo, Ray, MLflow, Grafana 등)을 조합해 이러한 고객의 페인포인트를 단계적으로 해결한 플랫폼 아키텍처 여정을 소개합니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">13:30 – 14:00</div>
+    <div class="agenda-content">
+      <div class="agenda-title">기억하고, 찾고, 행동한다 — Agentic AI를 위한 스토리지 설계</div>
+      <div class="agenda-speaker">Yongki Kim</div>
+      <div class="agenda-desc">기존에는 AI 모델 훈련 속도를 높이기 위해 GPU 성능을 뒷받침할 수 있는 고성능 스토리지만을 고집했습니다. 하지만 Agentic AI가 확산되면서 에이전트에게 회사의 맥락과 최신 정보를 공급하고, 도구를 써서 실제로 행동하게 만드는 방법이 중요해졌고, 이를 위한 데이터 활용 방안이 중시되고 있습니다. 본 세션에서는 경영진으로부터 'AI 서비스를 기획해봐'라는 지시를 받은 IT 기획자의 5일 프로젝트 여정으로, 다양한 AWS 스토리지 서비스를 활용해 Agentic AI를 위한 데이터를 어떻게 설계·공급할지, 그리고 학습 성능 역시 '지속 파인튜닝' 관점에서 여전히 어떻게 중요한지를 함께 알아보겠습니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-break">☕ Break (14:00 – 14:15)</div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">14:15 – 14:50</div>
+    <div class="agenda-content">
+      <div class="agenda-title">Flexible AI 솔루션을 활용한 컴퓨트 및 비용 최적화 전략</div>
+      <div class="agenda-speaker">Jaehyun Shin, Ian Choi</div>
+      <div class="agenda-desc">Architecting flexible AI Solution환경을 구축할 때의 비용 구조를 AWS Bedrock 환경과 SageMaker 같은 fully managed 환경과의 경제성 분석 비교를 통해 장단점을 분석해 봅니다. 또한 Spot, Capacity Blocks, 적정 사이징(Right-sizing)을 통한 비용 최적화 전략도 함께 살펴봅니다. EKS Hybrid Nodes를 활용하면, 별도의 클러스터를 관리할 필요 없이 민감한 추론 작업과 데이터는 온프레미스에 유지하면서 확장이 필요할 때 AWS로 버스팅할 수 있습니다. 하이브리드 아키텍처 패턴, 제조 및 스마트 시티를 위한 엣지 AI, 그리고 데이터 주권과 확장성이라는 과제를 해결한 실제 고객 사례도 함께 소개합니다. 마지막으로, EKS를 효과적으로 활용하기 위해 고려해야 할 주요 전략에 대해서도 다룹니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">14:50 – 16:50</div>
+    <div class="agenda-content">
+      <div class="agenda-title">🛠 Hands-On Lab: Deploy a GenAI Agent Platform on EKS</div>
+      <div class="agenda-speaker">Youngjoon Jeong, Suji Lee</div>
+      <div class="agenda-desc">Amazon EKS에서 완전한 AI 플랫폼을 구축하는 Agentic AI 실습 워크샵을 진행합니다. 실습 시간 동안 실제 대규모 언어 모델을 배포하고, 통합 AI 게이트웨이를 구성하며, 지능형 애플리케이션을 구축하게 됩니다. AWS 인프라에 배포할 수 있는 확장 가능한 패턴을 사용하여 진행합니다.</div>
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <div class="agenda-time">16:50 – 17:00</div>
+    <div class="agenda-content"><div class="agenda-title">Closing</div></div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>지금 바로 등록하세요</h2>
+  <p>좌석이 한정되어 있습니다. 오늘 등록하여 자리를 확보하세요.</p>
+  <p style="color:#aab7c4; font-size:13px; margin-bottom:16px; line-height:1.8;">※ 참가 등록 후 참석 확정되신 분들만 참석 가능합니다. (등록자가 너무 많을 경우 회사별 참석자 수가 조정될 수 있음을 미리 양해 부탁드립니다)<br>※ 핸즈온 실습을 위해 개인 노트북 개별 지참이 필요합니다.</p>
+  <a href="https://aws-experience.com/apj/smb/event/1e479d02-6c03-4158-bbac-93c754c39e67" class="hero-cta">행사 등록 →</a>
+</div>
+
+<div class="footer">
+  © 2026, Amazon Web Services, Inc. or its affiliates. All rights reserved.
+</div>
+
+</body>
+</html>
